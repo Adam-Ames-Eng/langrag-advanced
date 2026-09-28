@@ -6,19 +6,24 @@ pydantic
 # Frontend / UI
 streamlit
 
-# LangChain Ecosystem
+# LangChain Ecosystem & Models
 langchain-core
 langchain-community
 langchain-chroma
 langchain-ollama
+langchain-google-genai
 langchain-text-splitters
 langchain
+
+# Vector Database
+chromadb
 
 # Hybrid retrieval (keyword search side of the EnsembleRetriever)
 rank_bm25
 
 # Optional reranking step (set RERANK_ENABLED=false to skip)
 sentence-transformers
+flashrank
 
 # Multi-format ingestion in ingest.py
 pypdf
