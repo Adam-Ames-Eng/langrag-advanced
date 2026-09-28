@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables / secrets (Gemini API key, etc.)
+.env
+.streamlit/secrets.toml
+
+# Generated vector store — ingest.py rebuilds this from data/, so it
+# doesn't belong in version control (and can get large).
+chroma_db/
+
+# Local model/reranker cache, if it ever ends up inside the repo folder
+# instead of the user's global cache directory
+.cache/
+
+# Editor/OS noise
+.vscode/
+.idea/
+.DS_Store
+
+# NOTE: data/ is intentionally NOT ignored — the sample docs are meant
+# to be committed so the demo works out of the box.

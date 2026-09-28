@@ -31,6 +31,13 @@ Gemini-based variant — a separate, independent demo from the Ollama-based
 - `Dockerfile` — packages the FastAPI service (Ollama still runs
   separately — see comments in the file).
 - `.github/workflows/ci.yml` — runs `pytest` on every push/PR.
+- `.gitignore` — Python/venv/vector-store-appropriate; `data/` is
+  intentionally left out of it since the sample docs are meant to ship
+  with the repo.
+- `data/*.pdf` — three sample PDF docs (pricing, security/SSO,
+  automations) written to exercise the new PDF loader end-to-end;
+  `eval_questions.json` now points at their real filenames instead of
+  placeholders.
 - `app_streamlit.py` — same hybrid retrieval + optional reranking (a
   sidebar checkbox now, since a Gemini API key is already user-supplied
   there) + multi-turn question condensing + streamed answers via

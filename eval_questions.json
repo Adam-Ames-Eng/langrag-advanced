@@ -1,10 +1,14 @@
 [
   {
     "question": "How many automations can I have on the Team plan?",
-    "expected_source": "REPLACE_WITH_ACTUAL_FILENAME_IN_DATA_DIR"
+    "expected_source": "pricing.pdf"
   },
   {
     "question": "Does Nimbus support single sign-on?",
-    "expected_source": "REPLACE_WITH_ACTUAL_FILENAME_IN_DATA_DIR"
+    "expected_source": "security-and-sso.pdf"
+  },
+  {
+    "question": "What happens to my automation limit if I edit an existing automation?",
+    "expected_source": "automations-and-integrations.pdf"
   }
 ]
