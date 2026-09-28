@@ -1,7 +1,12 @@
+# Web Framework & API
 fastapi
 uvicorn[standard]
 pydantic
 
+# Frontend / UI
+streamlit
+
+# LangChain Ecosystem
 langchain-core
 langchain-community
 langchain-chroma
@@ -12,8 +17,7 @@ langchain
 # Hybrid retrieval (keyword search side of the EnsembleRetriever)
 rank_bm25
 
-# Optional reranking step in app.py (set RERANK_ENABLED=false to skip
-# installing/loading this if a machine can't afford it)
+# Optional reranking step (set RERANK_ENABLED=false to skip)
 sentence-transformers
 
 # Multi-format ingestion in ingest.py

@@ -6,7 +6,7 @@ import streamlit as st
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import BSHTMLLoader, PyPDFLoader, TextLoader
 from langchain_community.retrievers import BM25Retriever
-from langchain.retrievers import EnsembleRetriever
+from langchain_classic.retrievers import EnsembleRetriever
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
@@ -38,24 +38,36 @@ st.set_page_config(page_title="Nimbus Docs AI Assistant", page_icon="🤖")
 st.title("🤖 Nimbus Docs Q&A Assistant")
 st.caption("A grounded RAG demo powered by Google Gemini & LangChain")
 
-# Sidebar for configuration
 with st.sidebar:
     st.header("⚙️ Configuration")
+
+    if "gemini_api_key" not in st.session_state:
+        st.session_state.gemini_api_key = os.getenv("GEMINI_API_KEY", "")
+
     api_key = st.text_input(
         "Enter Google Gemini API Key:",
         type="password",
-        value=os.getenv("GEMINI_API_KEY", ""),
+        key="gemini_api_key",
         help="Get a free key from Google AI Studio",
     )
-    st.markdown("[Get a free Gemini API key](https://aistudio.google.com/)")
+
+    st.markdown(
+        "[Get a free Gemini API key](https://aistudio.google.com/)"
+    )
 
     rerank_enabled = st.checkbox(
         "Rerank retrieved chunks",
         value=True,
         help="Uses a small local cross-encoder to re-score retrieved chunks "
-        "by relevance before they go to the model. Downloads a model on "
-        "first run — turn off if that's not wanted on this machine.",
+        "by relevance before they go to the model.",
     )
+
+    if st.button("🚀 Start Assistant", type="primary"):
+        if not st.session_state.gemini_api_key.strip():
+            st.error("Please enter your Gemini API key.")
+        else:
+            st.session_state.api_key_ready = True
+            st.rerun()
 
     if st.button("Clear conversation"):
         st.session_state.messages = []
@@ -141,9 +153,15 @@ def format_history(messages: list[dict]) -> str:
 
 
 # Halt execution until the user provides an API key
-if not api_key:
-    st.info("👈 Please enter your Gemini API key in the sidebar to get started.", icon="🔑")
+if not st.session_state.get("api_key_ready", False):
+    st.info(
+        "👈 Enter your Gemini API key and click "
+        "**Start Assistant**.",
+        icon="🔑",
+    )
     st.stop()
+
+api_key = st.session_state.gemini_api_key.strip()
 
 # Initialize retriever, reranker, and generation/condense chains
 retriever = get_retriever(api_key)
