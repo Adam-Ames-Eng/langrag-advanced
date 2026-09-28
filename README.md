@@ -1,5 +1,7 @@
 # langrag-advanced
 
+> 🚀 **Live Interactive Demo:** [Try the deployed app here](https://langrag-advanced.streamlit.app/)
+
 A grounded RAG (Retrieval-Augmented Generation) demo that answers questions
 about a sample SaaS product ("Nimbus") using only its own documentation —
 never guessing, always citing sources. Built to show the retrieval and
