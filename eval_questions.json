@@ -1,0 +1,10 @@
+[
+  {
+    "question": "How many automations can I have on the Team plan?",
+    "expected_source": "REPLACE_WITH_ACTUAL_FILENAME_IN_DATA_DIR"
+  },
+  {
+    "question": "Does Nimbus support single sign-on?",
+    "expected_source": "REPLACE_WITH_ACTUAL_FILENAME_IN_DATA_DIR"
+  }
+]

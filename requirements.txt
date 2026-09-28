@@ -1,0 +1,25 @@
+fastapi
+uvicorn[standard]
+pydantic
+
+langchain-core
+langchain-community
+langchain-chroma
+langchain-ollama
+langchain-text-splitters
+langchain
+
+# Hybrid retrieval (keyword search side of the EnsembleRetriever)
+rank_bm25
+
+# Optional reranking step in app.py (set RERANK_ENABLED=false to skip
+# installing/loading this if a machine can't afford it)
+sentence-transformers
+
+# Multi-format ingestion in ingest.py
+pypdf
+beautifulsoup4
+
+# Testing / CI
+pytest
+httpx
